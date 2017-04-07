@@ -11,6 +11,19 @@
 |
 */
 
+// guest
+
+Route::get('/', 'PostController@index')->name('home');
+Route::get('/posts/{post}', 'PostController@show');
+Route::get('/posts/tags/{tag}', 'TagController@index');
+
+Route::get('/register', 'RegistrationController@create');
+Route::post('/register', 'RegistrationController@store');
+
+Route::get('/login', ['as' => 'login', 'uses' => 'SessionController@create']);
+Route::post('/login', 'SessionController@store');
+Route::get('/logout', 'SessionController@destroy');
+
 // onko kirjautunut?
 
 Route::group(['middleware' => 'auth'], function () {
@@ -46,16 +59,3 @@ Route::group(['middleware' => ['auth', 'modOnly']], function () {
 
 
 });
-
-// guest
-
-Route::get('/', 'PostController@index')->name('home');
-Route::get('/posts/{post}', 'PostController@show');
-Route::get('/posts/tags/{tag}', 'TagController@index');
-
-Route::get('/register', 'RegistrationController@create');
-Route::post('/register', 'RegistrationController@store');
-
-Route::get('/login', ['as' => 'login', 'uses' => 'SessionController@create']);
-Route::post('/login', 'SessionController@store');
-Route::get('/logout', 'SessionController@destroy');
