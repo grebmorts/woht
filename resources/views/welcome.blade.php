@@ -79,9 +79,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                  <a href="{{ url('/') }}">Login</a>
-                    Käy sisään!
-                  </a>
+                  <a href="{{ url('/') }}">Käy sisään!</a>
+                  <a href="{{ url('/home') }}">Welcome!</a>
                 </div>
 
                 <div class="links">
